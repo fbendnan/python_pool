@@ -19,4 +19,4 @@ def test_temperature_input():
         check_temperature(temp)
     print("\nAll tests completed - program didn't crash!")
 
-test_temperature_input()
+ioitest_temperature_input()
