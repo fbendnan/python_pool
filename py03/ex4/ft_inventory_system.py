@@ -7,9 +7,10 @@ def player_inventory(players):
     for keys, values in players["alice"].items():
         inventory_value += (values.get("value") * values.get("quantity"))
         item_count += values.get("quantity")
+        qty = values.get("quantity")
 
         item_type = values.get("type")
-        categories[item_type] = categories.get(item_type, 0) + values.get("quantity")
+        categories[item_type] = categories.get(item_type, 0) + qty
 
         print(f"{keys} ({values.get('type')}, {values.get('rarity')}): "
               f"{values.get('quantity')}x @ {values.get('value')} gold "
@@ -84,7 +85,8 @@ def inventory_analytics(players):
                 if item_name not in rare_items:
                     rare_items.append(item_name)
 
-    print(f"Most valuable player: {most_value_player.capitalize()} ({most_value} gold)")
+    print(f"Most valuable player: {most_value_player.capitalize()}"
+          f"({most_value} gold)")
     print(f"Most items: {most_items_player.capitalize()} ({most_items} items)")
 
     print("Rarest items: ", end="")
@@ -99,12 +101,24 @@ def inventory_analytics(players):
 
 def main():
     alice_inventory = {
-        "sword": {"type": "weapon", "rarity": "rare", "quantity": 1, "value": 500},
-        "potion": {"type": "consumable", "rarity": "common", "quantity": 5, "value": 50},
-        "shield": {"type": "armor", "rarity": "uncommon", "quantity": 1, "value": 200}
+        "sword": {
+            "type": "weapon", "rarity": "rare",
+            "quantity": 1, "value": 500
+        },
+        "potion": {
+            "type": "consumable", "rarity": "common",
+            "quantity": 5, "value": 50
+        },
+        "shield": {
+            "type": "armor", "rarity": "uncommon",
+            "quantity": 1, "value": 200
+        }
     }
     bob_inventory = {
-        "potion": {"type": "consumable", "rarity": "common", "quantity": 0, "value": 50},
+        "potion": {
+            "type": "consumable", "rarity": "common",
+            "quantity": 0, "value": 50
+        },
     }
     players = {
         "alice": alice_inventory,
