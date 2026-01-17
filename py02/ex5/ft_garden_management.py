@@ -31,12 +31,12 @@ class GardenManager:
         except GardenError as e:
             print(e)
 
-    def water_plants(self, water_lvl ,should_lvl):
+    def water_plants(self, water_lvl, should_lvl):
         print("\nWatering plants...")
         print("Opening watering system")
         try:
             for plant in self.plants:
-                if water_lvl < should_lvl :
+                if water_lvl < should_lvl:
                     raise WaterError()
                 print(f"Watering {plant.plant_name} - success")
         except GardenError as e:
